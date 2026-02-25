@@ -2,13 +2,13 @@
   "name": "jira-mini",
   "displayName": "Jira Mini",
   "description": "Lightweight Jira Cloud integration with SDD (Spec Driven Development) workflow for AI-powered code editors.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "MatheusDuarteDeveloper",
   "license": "MIT",
   "icon": "icon.png",
   "repository": {
     "type": "git",
-    "url": "https://github.com/YOUR_USERNAME/jira-mini-extension"
+    "url": "https://github.com/duarteDeveloper/jira-mini-extension"
   },
   "engines": {
     "vscode": "^1.85.0"
