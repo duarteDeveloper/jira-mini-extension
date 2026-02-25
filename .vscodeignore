@@ -1,0 +1,13 @@
+.vscode/**
+.vscode-test/**
+src/**
+node_modules/**
+.gitignore
+tsconfig.json
+**/*.ts
+**/*.map
+.zprofile
+whatsapp-message.txt
+agent-transcripts/**
+.cursor/**
+CHANGELOG.md

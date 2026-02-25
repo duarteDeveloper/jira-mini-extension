@@ -1,0 +1,233 @@
+{
+  "name": "jira-mini",
+  "displayName": "Jira Mini",
+  "description": "Lightweight Jira Cloud integration with SDD (Spec Driven Development) workflow for AI-powered code editors.",
+  "version": "0.1.0",
+  "publisher": "YOUR_PUBLISHER_ID",
+  "license": "MIT",
+  "icon": "icon.png",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/jira-mini-extension"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": ["Other", "SCM Providers"],
+  "keywords": ["jira", "agile", "scrum", "kanban", "sdd", "spec driven development", "cursor", "ai"],
+  "main": "./out/extension.js",
+  "activationEvents": [
+    "onView:jiraMini.issuesView",
+    "onCommand:jiraMini.open",
+    "onCommand:jiraMini.connect"
+  ],
+  "contributes": {
+    "commands": [
+      { "command": "jiraMini.open", "title": "Jira Mini: Open" },
+      { "command": "jiraMini.connect", "title": "Jira Mini: Connect..." },
+      { "command": "jiraMini.setAuth", "title": "Jira Mini: Set Auth (email + token)" },
+      { "command": "jiraMini.pickBoard", "title": "Jira Mini: Pick Board" },
+      { "command": "jiraMini.backlogSelectedBoard", "title": "Jira Mini: Backlog (Selected Board)" },
+      { "command": "jiraMini.activeSprintSelectedBoard", "title": "Jira Mini: Active Sprint (Selected Board)" },
+      { "command": "jiraMini.searchProjectOpen", "title": "Jira Mini: All Open (Project)" },
+      { "command": "jiraMini.search", "title": "Jira Mini: Search (JQL)" },
+      { "command": "jiraMini.myOpen", "title": "Jira Mini: My Open Issues" },
+      { "command": "jiraMini.currentSprint", "title": "Jira Mini: Current Sprint (My)" },
+      { "command": "jiraMini.byEpic", "title": "Jira Mini: By Epic" },
+      { "command": "jiraMini.byLabel", "title": "Jira Mini: By Label" },
+      { "command": "jiraMini.clearCache", "title": "Jira Mini: Clear Cache" },
+      { "command": "jiraMini.sddSpec", "title": "Jira Mini: SDD Generate Spec" },
+      { "command": "jiraMini.sddPlan", "title": "Jira Mini: SDD Generate Plan" },
+      { "command": "jiraMini.sddCopyPrompt", "title": "Jira Mini: SDD Copy Cursor Plan Prompt" },
+      { "command": "jiraMini.sddFromKey", "title": "Jira Mini: SDD (from Issue Key)" },
+      { "command": "jiraMini.openIssuePanel", "title": "Jira Mini: Open Issue (Panel)" },
+      { "command": "jiraMini.transitionIssue", "title": "Jira Mini: Move Issue Status" },
+      { "command": "jiraMini.solveSelected", "title": "Jira Mini: Solve Selected", "icon": "$(run-all)" },
+      { "command": "jiraMini.solveSection", "title": "Jira Mini: Solve All (Section)", "icon": "$(run-all)" },
+      { "command": "jiraMini.refreshTree", "title": "Jira Mini: Refresh", "icon": "$(refresh)" },
+      { "command": "jiraMini.undoTransition", "title": "Jira Mini: Undo Last Transition" },
+      { "command": "jiraMini.assignToMe", "title": "Jira Mini: Assign to Me", "icon": "$(person)" },
+      { "command": "jiraMini.openInBrowser", "title": "Open in Browser", "icon": "$(link-external)" }
+    ],
+    "viewsContainers": {
+      "activitybar": [
+        {
+          "id": "jiraMini",
+          "title": "Jira Mini",
+          "icon": "$(bug)"
+        }
+      ]
+    },
+    "views": {
+      "jiraMini": [
+        {
+          "id": "jiraMini.issuesView",
+          "name": "Jira Mini"
+        }
+      ]
+    },
+    "menus": {
+      "view/title": [
+        {
+          "command": "jiraMini.open",
+          "when": "view == jiraMini.issuesView",
+          "group": "navigation@1"
+        },
+        {
+          "command": "jiraMini.pickBoard",
+          "when": "view == jiraMini.issuesView",
+          "group": "navigation@2"
+        },
+        {
+          "command": "jiraMini.refreshTree",
+          "when": "view == jiraMini.issuesView",
+          "group": "navigation@3"
+        },
+        {
+          "command": "jiraMini.solveSelected",
+          "when": "view == jiraMini.issuesView",
+          "group": "navigation@4"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "jiraMini.openIssuePanel",
+          "when": "view == jiraMini.issuesView && viewItem == issue",
+          "group": "navigation"
+        },
+        {
+          "command": "jiraMini.openInBrowser",
+          "when": "view == jiraMini.issuesView && viewItem == issue",
+          "group": "inline"
+        },
+        {
+          "command": "jiraMini.openInBrowser",
+          "when": "view == jiraMini.issuesView && viewItem == issue",
+          "group": "jiraMini@1"
+        },
+        {
+          "command": "jiraMini.assignToMe",
+          "when": "view == jiraMini.issuesView && viewItem == issue",
+          "group": "jiraMini@2"
+        },
+        {
+          "command": "jiraMini.transitionIssue",
+          "when": "view == jiraMini.issuesView && viewItem == issue",
+          "group": "jiraMini@2"
+        },
+        {
+          "command": "jiraMini.sddSpec",
+          "when": "view == jiraMini.issuesView && viewItem == issue",
+          "group": "jiraMini@2"
+        },
+        {
+          "command": "jiraMini.sddPlan",
+          "when": "view == jiraMini.issuesView && viewItem == issue",
+          "group": "jiraMini@3"
+        },
+        {
+          "command": "jiraMini.sddCopyPrompt",
+          "when": "view == jiraMini.issuesView && viewItem == issue",
+          "group": "jiraMini@4"
+        },
+        {
+          "command": "jiraMini.solveSection",
+          "when": "view == jiraMini.issuesView && viewItem == section",
+          "group": "navigation"
+        },
+        {
+          "command": "jiraMini.solveSection",
+          "when": "view == jiraMini.issuesView && viewItem == sprint",
+          "group": "navigation"
+        },
+        {
+          "command": "jiraMini.pickBoard",
+          "when": "view == jiraMini.issuesView && viewItem == agileError",
+          "group": "jiraMini@5"
+        },
+        {
+          "command": "jiraMini.search",
+          "when": "view == jiraMini.issuesView && viewItem == agileError",
+          "group": "jiraMini@6"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "Jira Mini",
+      "properties": {
+        "jiraMini.baseUrl": {
+          "type": "string",
+          "default": "",
+          "description": "Jira Cloud base URL (e.g. https://myorg.atlassian.net)"
+        },
+        "jiraMini.defaultJql": {
+          "type": "string",
+          "default": "assignee = currentUser() ORDER BY updated DESC",
+          "description": "Default JQL used in Search command"
+        },
+        "jiraMini.maxResults": {
+          "type": "number",
+          "default": 50,
+          "description": "Maximum number of issues returned per search"
+        },
+        "jiraMini.useEnhancedSearch": {
+          "type": "boolean",
+          "default": true,
+          "description": "Use enhanced /search/jql endpoint (falls back to /search on 404)"
+        },
+        "jiraMini.sddFolder": {
+          "type": "string",
+          "default": ".sdd",
+          "description": "Folder for SDD spec/plan files (relative to workspace root)"
+        },
+        "jiraMini.cacheTtlSeconds": {
+          "type": "number",
+          "default": 60,
+          "description": "Cache time-to-live in seconds"
+        },
+        "jiraMini.authMode": {
+          "type": "string",
+          "enum": ["basic", "oauth"],
+          "default": "basic",
+          "description": "Authentication mode used by Jira Mini."
+        },
+        "jiraMini.oauthClientId": {
+          "type": "string",
+          "default": "",
+          "description": "Atlassian OAuth 3LO client id used in Connect wizard."
+        },
+        "jiraMini.oauthScopes": {
+          "type": "string",
+          "default": "read:jira-work read:jira-user",
+          "description": "OAuth scopes separated by spaces for Atlassian 3LO."
+        },
+        "jiraMini.oauthAudience": {
+          "type": "string",
+          "default": "api.atlassian.com",
+          "description": "OAuth audience for Atlassian authorization requests."
+        },
+        "jiraMini.sdd.provider": {
+          "type": "string",
+          "enum": ["auto", "spec-kit", "agent-os", "generic"],
+          "default": "auto",
+          "description": "Select SDD provider strategy."
+        },
+        "jiraMini.sdd.neverOverwrite": {
+          "type": "boolean",
+          "default": true,
+          "description": "When true, SDD generation asks before overwriting existing files."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.0",
+    "@types/vscode": "^1.85.0",
+    "typescript": "^5.3.0"
+  }
+}
