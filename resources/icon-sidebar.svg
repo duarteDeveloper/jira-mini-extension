@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+  <!-- Jira-inspired mark: two overlapping angular shapes -->
+  <path d="M12.005 2L6.5 7.5l5.505 5.505L17.51 7.5 12.005 2zm0 8.99L6.5 16.495 12.005 22l5.505-5.505-5.505-5.505z"/>
+  <path d="M12.005 7.5L8.755 10.75l3.25 3.25 3.25-3.25L12.005 7.5z" opacity="0.6"/>
+</svg>

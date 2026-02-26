@@ -2,7 +2,7 @@
   "name": "jira-mini",
   "displayName": "Jira Mini",
   "description": "Lightweight Jira Cloud integration with SDD (Spec Driven Development) workflow for AI-powered code editors.",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "MatheusDuarteDeveloper",
   "license": "MIT",
   "icon": "icon.png",
@@ -54,7 +54,7 @@
         {
           "id": "jiraMini",
           "title": "Jira Mini",
-          "icon": "$(bug)"
+          "icon": "resources/icon-sidebar.svg"
         }
       ]
     },

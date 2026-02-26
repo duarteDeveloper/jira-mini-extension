@@ -1,0 +1,4 @@
+{
+    "jiraMini.baseUrl": "https://primaryappnz.atlassian.net",
+    "jiraMini.authMode": "basic"
+}
